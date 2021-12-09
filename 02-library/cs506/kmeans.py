@@ -4,6 +4,7 @@ import random
 import csv
 
 
+
 def point_avg(points):
     """
     Accepts a list of points, each with the same number of dimensions.
@@ -11,7 +12,15 @@ def point_avg(points):
     
     Returns a new point which is the center of all the points.
     """
-    raise NotImplementedError()
+    res = []
+    for i in range(len(points[0])):
+        sum = 0
+        for j in range(len(points)):
+            sum += points[j][i]
+            if j == len(points)-1:
+                res.append(sum/len(points))
+
+    return res
 
 
 def update_centers(dataset, assignments):
@@ -43,10 +52,10 @@ def distance(a, b):
     """
     Returns the Euclidean distance between a and b
     """
-    raise NotImplementedError()
+    return sim.euclidean_dist(a, b)
 
 def distance_squared(a, b):
-    raise NotImplementedError()
+    return distance(a,b)**2
 
 def generate_k(dataset, k):
     """
